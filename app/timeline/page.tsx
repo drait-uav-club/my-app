@@ -8,7 +8,7 @@ import { Calendar, Trophy, Users, Rocket, Award, Star, Target, Zap } from "lucid
 export default function TimelinePage() {
   const timelineEvents = [
     {
-      year: "2024",
+      year: "2025",
       title: "Advanced AI Integration",
       description: "Launched our most sophisticated autonomous navigation system with machine learning capabilities",
       type: "milestone",
@@ -17,8 +17,17 @@ export default function TimelinePage() {
       status: "current",
     },
     {
-      year: "2023",
-      title: "National Championship Victory",
+      year: "2025",
+      title: "payload delivery",
+      description: "Launched our most sophisticated autonomous navigation system with machine learning capabilities",
+      type: "milestone",
+      icon: Rocket,
+      achievements: ["AI-powered obstacle avoidance", "Real-time path optimization", "Predictive maintenance system"],
+      status: "current",
+    },
+    {
+      year: "2024",
+      title: "modular fixed wing uav",
       description: "Won first place at the National UAV Racing Championship with our custom-built racing drone",
       type: "achievement",
       icon: Trophy,
@@ -74,17 +83,17 @@ export default function TimelinePage() {
 
   const upcomingEvents = [
     {
-      date: "March 2024",
-      title: "International UAV Expo",
+      date: "September 2025",
+      title: "NIDAR",
       description: "Showcasing our latest autonomous systems at the world's largest UAV exhibition",
     },
     {
-      date: "April 2024",
-      title: "Student Competition",
+      date: "November 2025",
+      title: "AEROTHON",
       description: "Hosting our first inter-university UAV competition with 20+ participating teams",
     },
     {
-      date: "June 2024",
+      date: "December 2025",
       title: "Research Publication",
       description: "Publishing our research on swarm intelligence in the Journal of Autonomous Systems",
     },

@@ -1,25 +1,31 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Plane, Users, Trophy, Calendar } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-900 via-blue-900 to-indigo-900">
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-1 h-1 bg-sky-300 rounded-full animate-ping"></div>
-          <div className="absolute bottom-40 left-20 w-3 h-3 bg-blue-300 rounded-full animate-bounce"></div>
-          <div className="absolute bottom-20 right-10 w-2 h-2 bg-white rounded-full animate-pulse"></div>
-        </div>
+      {/* Hero Section with video background */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden snap-start">
+        {/* Video background */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          src="/video1_drone.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
 
-        <div className="container mx-auto px-4 text-center relative z-10">
+        {/* Overlay for dark tint */}
+        <div className="absolute inset-0 bg-black bg-opacity-40 z-10" />
+
+        {/* Foreground Content */}
+        <div className="container mx-auto px-4 text-center relative z-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,32 +33,41 @@ export default function HomePage() {
             className="mb-8"
           >
             <div className="w-32 h-32 mx-auto mb-8 relative">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                  className="w-32 h-32 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full flex items-center justify-center overflow-hidden"
-                >
-                  <img 
-                    src="/club-logo.jpg"  // make sure this is inside your /public folder
-                    alt="UAV club logo featuring a stylized drone in flight, set against a circular background with blue gradients. The logo conveys innovation and teamwork, surrounded by a vibrant, energetic atmosphere. No visible text."
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-
-
-             <img
-              src="/drait-logo.png"
-              alt="DRAIT Logo"
-              width={128}
-              height={128}
-              className="fixed top-16 left-4 w-16 h-16 object-contain z-50"
+              <Image
+                src="/club-logo.png"
+                alt="UAV club logo"
+                width={128}
+                height={128}
+                className="w-32 h-32 object-contain"
+                priority
               />
-
+              <Image
+                src="/drait-logo.png"
+                alt="DRAIT Logo"
+                width={64}
+                height={64}
+                className="fixed top-16 left-4 w-16 h-16 object-contain z-50"
+              />
             </div>
-            <h3 className="text-6xl md:text-6xl  text-white mb-4 ">DR AIT </h3>
-            <h1 className="text-6xl md:text-8xl font-bold text-white mb-4">UAV CLUB</h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 2 }}
+              className="text-6xl md:text-8xl font-bold text-white mb-4"
+            >
+              DR AIT
+            </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 2, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-6xl md:text-8xl font-bold text-white mb-4"
+            >
+              UAV CLUB
+            </motion.h1>
             <p className="text-xl md:text-2xl text-sky-200 mb-8 max-w-3xl mx-auto">
-              Soaring Beyond Limits -  Where Innovation Meets the Sky
+              Soaring Beyond Limits - Where Innovation Meets the Sky
             </p>
           </motion.div>
 
@@ -77,44 +92,106 @@ export default function HomePage() {
             </Button>
           </motion.div>
         </div>
-
-        {/* Floating animation */}
-        <motion.div
-          animate={{ y: [-20, 20, -20] }}
-          transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
-          <div className="w-6 h-10 border-2 border-sky-300 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-sky-300 rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </motion.div>
       </section>
 
-      {/* Stats Section */}
+      {/* About Section */}
       <section className="py-20 bg-black/20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">About Us</h2>
+            <p className="text-xl text-sky-200 max-w-2xl mx-auto">
+              We are a passionate team dedicated to advancing UAV technology and fostering innovation in the field of unmanned aerial vehicles.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-sky-300/20"
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
+              <p className="text-sky-200">
+                To push the boundaries of UAV technology and create innovative solutions that benefit society and the environment.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-sky-300/20"
+            >
+              <h3 className="text-2xl font-bold text-white mb-4">Join Us</h3>
+              <p className="text-sky-200">
+                Become a part of our community and contribute to exciting UAV projects. Whether you're a student or a professional, there's a place for you here.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section className="py-20 bg-black/20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Sponsors</h2>
+            <p className="text-xl text-sky-200 max-w-2xl mx-auto">
+              We are grateful to our sponsors for their support in advancing UAV innovation.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.3 },
+              },
+            }}
+          >
             {[
-              { icon: Users, number: "50+", label: "Active Members" },
-              { icon: Plane, number: "25+", label: "UAV Projects" },
-              { icon: Trophy, number: "15+", label: "Competitions Won" },
-              { icon: Calendar, number: "3+", label: "Years Active" },
-            ].map((stat, index) => (
+              { name: "Sponsor 1", logo: "/sponsor1_logo.png" },
+              { name: "Sponsor 2", logo: "/sponsor2_logo.png" },
+              { name: "Sponsor 3", logo: "/sponsor3_logo.png" },
+              { name: "Sponsor 4", logo: "/sponsor4_logo.png" },
+              { name: "Sponsor 5", logo: "/sponsor5_logo.png" },
+              { name: "Sponsor 6", logo: "/sponsor6_logo.png" },
+            ].map((sponsor, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-sky-300/20 text-center"
+                variants={{
+                  hidden: { opacity: 0, y: 50 },
+                  visible: { opacity: 1, y: 0 },
+                }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full flex items-center justify-center">
-                  <stat.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-2">{stat.number}</h3>
-                <p className="text-sky-200">{stat.label}</p>
+                <Image
+                  src={sponsor.logo}
+                  alt={`${sponsor.name} Logo`}
+                  width={150}
+                  height={150}
+                  className="w-24 h-24 mx-auto object-contain mb-4"
+                />
+                <h3 className="text-xl font-bold text-white">{sponsor.name}</h3>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -138,17 +215,17 @@ export default function HomePage() {
               {
                 title: "Autonomous Surveillance Drone",
                 description: "AI-powered surveillance system with real-time object detection",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/placeholder.svg",
               },
               {
                 title: "Racing Quadcopter",
                 description: "High-speed racing drone with advanced flight controls",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/placeholder.svg",
               },
               {
                 title: "Delivery UAV System",
                 description: "Automated package delivery system for urban environments",
-                image: "/placeholder.svg?height=300&width=400",
+                image: "/placeholder.svg",
               },
             ].map((project, index) => (
               <motion.div
@@ -160,7 +237,7 @@ export default function HomePage() {
                 className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-sky-300/20"
               >
                 <Image
-                  src={project.image || "/placeholder.svg"}
+                  src={project.image}
                   alt={project.title}
                   width={400}
                   height={300}
@@ -183,5 +260,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  )
+  );
 }

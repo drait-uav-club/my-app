@@ -10,16 +10,16 @@ import Image from "next/image"
 export default function TeamPage() {
   const leadership = [
     {
-      name: "Alex Chen",
+      name: "Hismith",
       role: "President",
-      specialization: "Autonomous Systems",
+      specialization: "Non-Tech lead",
       image: "/placeholder.svg?height=300&width=300",
       bio: "Leading UAV innovation with 5+ years in autonomous flight systems",
       achievements: ["National Champion 2023", "AI Innovation Award"],
       skills: ["Machine Learning", "Flight Control", "Team Leadership"],
     },
     {
-      name: "Sarah Johnson",
+      name: "Shreevastav",
       role: "Vice President",
       specialization: "Aerodynamics",
       image: "/placeholder.svg?height=300&width=300",
@@ -28,9 +28,9 @@ export default function TeamPage() {
       skills: ["CFD Analysis", "Design Optimization", "Project Management"],
     },
     {
-      name: "Mike Rodriguez",
+      name: "Venkat",
       role: "Technical Lead",
-      specialization: "Electronics & Control",
+      specialization: "Computer Science and Buisness system",
       image: "/placeholder.svg?height=300&width=300",
       bio: "Specializing in flight control systems and embedded programming",
       achievements: ["Innovation in Controls 2022", "Patent Holder"],
